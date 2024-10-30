@@ -1,0 +1,33 @@
+{
+    "name": "k8s-sample",
+    "publisher": "vgulyy",
+    "displayName": "K8S sample",
+    "description": "K8S sample",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vitaliy-guliy/k8s-sample"
+    },
+    "categories": [
+        "Other"
+    ],
+    "main": "./out/main.js",
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "clean": "rm -rf ./out && rm -rf node_modules",
+        "build": "npm install && npm run compile"
+    },
+    "dependencies": {
+        "reflect-metadata": "^0.2.2",
+        "axios": "^1.7.4",
+        "@kubernetes/client-node": "^0.22.0",
+
+        "inversify": "^6.0.2",
+        "request": "2.88.2"
+    },
+    "devDependencies": {
+        "@types/node": "16.x",
+        "typescript": "^5.4.5"
+    }
+}
