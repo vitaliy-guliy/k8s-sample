@@ -9,6 +9,9 @@ components:
       memoryLimit: 4G
       cpuRequest: '1'
       cpuLimit: '2'
+      env:
+        - name: 'DEFAULT_EXTENSION'
+          value: '/projects/k8s-sample/atlassian.atlascode-3.0.10.vsix'
 
 commands:
   - id: install-dependencies
