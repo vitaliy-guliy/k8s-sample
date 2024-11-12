@@ -10,7 +10,7 @@ components:
       cpuRequest: '1'
       cpuLimit: '2'
       env:
-        - name: 'DEFAULT_EXTENSION'
+        - name: 'DEFAULT_EXTENSIONS'
           value: '/projects/k8s-sample/atlassian.atlascode-3.0.10.vsix'
 
 commands:
