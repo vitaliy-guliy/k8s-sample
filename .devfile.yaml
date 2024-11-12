@@ -9,6 +9,9 @@ components:
       memoryLimit: 4G
       cpuRequest: '1'
       cpuLimit: '2'
+      env:
+        - name: DEFAULT_EXTENSIONS
+          value: '/tmp/redhat.vscode-openshift-connector-1.16.0@linux-x64.vsix;/tmp/redhat.vscode-yaml-1.15.0.vsix'
 
 commands:
   - id: install-dependencies
@@ -24,3 +27,15 @@ commands:
       group:
         kind: build
         isDefault: true
+  - id: add-default-extensions
+    exec:
+      # name of the tooling container
+      component: tools
+      # download several extensions by curl
+      commandLine: |
+        curl https://open-vsx.org/api/redhat/vscode-openshift-connector/linux-x64/1.16.0/file/redhat.vscode-openshift-connector-1.16.0@linux-x64.vsix --location -o /tmp/redhat.vscode-openshift-connector-1.16.0@linux-x64.vsix
+        curl https://open-vsx.org/api/redhat/vscode-yaml/1.15.0/file/redhat.vscode-yaml-1.15.0.vsix --location -o /tmp/redhat.vscode-yaml-1.15.0.vsix
+
+events:
+  postStart:
+    - add-default-extensions
