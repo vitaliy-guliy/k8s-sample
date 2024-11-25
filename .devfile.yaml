@@ -9,6 +9,11 @@ components:
       memoryLimit: 4G
       cpuRequest: '1'
       cpuLimit: '2'
+      env:
+        - name: 'HTTPS_PROXY'
+          value: 'http://proxy-host:80'
+        - name: 'no_proxy'
+          value: '127.0.0.1'
 
 commands:
   - id: install-dependencies
