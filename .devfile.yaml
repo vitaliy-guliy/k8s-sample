@@ -9,6 +9,9 @@ components:
       memoryLimit: 4G
       cpuRequest: '1'
       cpuLimit: '2'
+      env:
+        - name: 'SKIP_PATCHING_VSIX_REGISTRY'
+          value: 'yes'
 
 commands:
   - id: install-dependencies
