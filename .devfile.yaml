@@ -32,12 +32,15 @@ commands:
       # put your tooling container name here
       component: tools
       commandLine: |
+        // patch product.json
         jq '.extensionsGallery += {"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery"}' /checode/checode-linux-libc/ubi8/product.json > /checode/checode-linux-libc/ubi8/product.copy.json
         mv -f /checode/checode-linux-libc/ubi8/product.copy.json /checode/checode-linux-libc/ubi8/product.json
         jq '.extensionsGallery += {"itemUrl": "https://marketplace.visualstudio.com/items"}' /checode/checode-linux-libc/ubi8/product.json > /checode/checode-linux-libc/ubi8/product.copy.json
         mv -f /checode/checode-linux-libc/ubi8/product.copy.json /checode/checode-linux-libc/ubi8/product.json
         jq '.extensionsGallery += {"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index"}' /checode/checode-linux-libc/ubi8/product.json > /checode/checode-linux-libc/ubi8/product.copy.json
         mv -f /checode/checode-linux-libc/ubi8/product.copy.json /checode/checode-linux-libc/ubi8/product.json
+        // reset launcher script to avoid losing the settings
+        echo "export class OpenVSIXRegistry { async configure() {} }" > /checode/checode-linux-libc/ubi8/launcher/openvsix-registry.js
 
 events:
   postStart:
