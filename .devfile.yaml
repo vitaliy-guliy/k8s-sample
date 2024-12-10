@@ -35,6 +35,7 @@ commands:
         mv -f /checode/checode-linux-libc/ubi8/product.copy.json /checode/checode-linux-libc/ubi8/product.json
         jq '.extensionsGallery += {"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index"}' /checode/checode-linux-libc/ubi8/product.json > /checode/checode-linux-libc/ubi8/product.copy.json
         mv -f /checode/checode-linux-libc/ubi8/product.copy.json /checode/checode-linux-libc/ubi8/product.json
+        export TEST='test-value'
 
 events:
   postStart:
