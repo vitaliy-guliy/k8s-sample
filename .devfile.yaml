@@ -9,6 +9,9 @@ components:
       memoryLimit: 4G
       cpuRequest: '1'
       cpuLimit: '2'
+      env:
+        - name: OPENVSX_REGISTRY_URL
+          value: ''
 
 commands:
   - id: install-dependencies
@@ -35,7 +38,6 @@ commands:
         mv -f /checode/checode-linux-libc/ubi8/product.copy.json /checode/checode-linux-libc/ubi8/product.json
         jq '.extensionsGallery += {"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index"}' /checode/checode-linux-libc/ubi8/product.json > /checode/checode-linux-libc/ubi8/product.copy.json
         mv -f /checode/checode-linux-libc/ubi8/product.copy.json /checode/checode-linux-libc/ubi8/product.json
-        export TEST='test-value'
 
 events:
   postStart:
