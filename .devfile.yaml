@@ -24,3 +24,17 @@ commands:
       group:
         kind: build
         isDefault: true
+  - id: patch-product-json
+    exec:
+      # put your tooling container name here
+      component: tools
+      commandLine: |
+        cat /checode/checode-linux-libc/ubi8/product.json \
+        | jq '.extensionsGallery += {"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery"}' \
+        | .extensionsGallery += {"itemUrl": "https://marketplace.visualstudio.com/items"}'
+        | .extensionsGallery += {"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index"}' > /checode/checode-linux-libc/ubi8/product.copy.json
+        mv -f /checode/checode-linux-libc/ubi8/product.copy.json /checode/checode-linux-libc/ubi8/product.json
+
+events:
+  postStart:
+    - patch-product-json
