@@ -4,9 +4,9 @@
         {
             "label": "Install dependencies",
             "type": "shell",
-            "command": "npm install",
+            "command": "cat $HOME/.bashrc",
             "windows": {
-                "command": "npm install"
+                "command": ""
             },
             "group": "none",
             "presentation": {
